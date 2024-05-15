@@ -14,9 +14,7 @@ export const env = createEnv({
 	 *
 	 * 💡 You'll get type errors if these are not prefixed with NEXT_PUBLIC_.
 	 */
-	client: {
-		NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
-	},
+	client: {},
 	/*
 	 * Due to how Next.js bundles environment variables on Edge and Client,
 	 * we need to manually destructure them to make sure all are included in bundle.
@@ -26,4 +24,5 @@ export const env = createEnv({
 	runtimeEnv: {
 		DATABASE_URL: process.env.DATABASE_URL,
 	},
+	emptyStringAsUndefined: true,
 });
