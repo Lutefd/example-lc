@@ -1,6 +1,17 @@
-import { db } from './index';
 import { test } from './schema';
 import { faker } from '@faker-js/faker';
+import 'dotenv/config';
+import { drizzle } from 'drizzle-orm/libsql';
+import { createClient } from '@libsql/client';
+import * as schema from './schema';
+import 'dotenv/config';
+import { env } from '@/env';
+const client = createClient({
+	url: env.DATABASE_URL,
+});
+export const db = drizzle(client, {
+	schema,
+});
 
 const seed = async () => {
 	const data: (typeof test.$inferInsert)[] = [];
