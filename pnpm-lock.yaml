@@ -75,6 +75,9 @@ importers:
       drizzle-kit:
         specifier: ^0.21.2
         version: 0.21.2
+      esbuild-register:
+        specifier: ^3.5.0
+        version: 3.5.0(esbuild@0.19.12)
       eslint:
         specifier: ^8
         version: 8.57.0
