@@ -18,6 +18,7 @@ const seed = async () => {
 	for (let i = 0; i < 15; i++) {
 		data.push({
 			name: faker.person.fullName(),
+			createdAt: faker.date.recent(),
 		});
 	}
 	console.log('Seed started');
