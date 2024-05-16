@@ -1,0 +1,1 @@
+ALTER TABLE `test` ADD `created_at` integer;
