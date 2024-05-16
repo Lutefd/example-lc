@@ -14,7 +14,7 @@
 ## Pre-requisites
 
 -   Turso [installation](https://docs.turso.tech/cli/installation) and [setup for local development](https://docs.turso.tech/local-development#turso-cli)
--   Setup your `.env` using the `.env.sample`. The DB_URL should be the Turso local URL that you’re presented in your CLI. The DB_AUTH_TOKEN isn’t necessary in development.
+-   Setup your `.env` using the `.env.sample`. The DATABASE_URL should be the Turso local URL that you’re presented in your CLI. The DB_AUTH_TOKEN isn’t necessary in development.
 -   Install [pnpm](https://pnpm.io/installation) if you don’t have it in your machine.
 
 ---
