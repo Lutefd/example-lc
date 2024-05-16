@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Index
+
+-   [Index](#index)
+-   [Pre-requisites](#pre-requisites)
+-   [Getting Started](#getting-started)
+    -   [Dependencies installation](#dependencies-installation)
+    -   [Run the migrations](#run-the-migrations)
+    -   [Seed the database](#seed-the-database)
+    -   [Start the development server](#start-the-development-server)
+-   [Implementations](#implementations)
+    -   [Method 1](#method-1)
+    -   [Method 2](#method-2)
+
+## Pre-requisites
+
+-   Turso [installation](https://docs.turso.tech/cli/installation) and [setup for local development](https://docs.turso.tech/local-development#turso-cli)
+-   Setup your `.env` using the `.env.sample`. The DB_URL should be the Turso local URL that you’re presented in your CLI. The DB_AUTH_TOKEN isn’t necessary in development.
+-   Install [pnpm](https://pnpm.io/installation) if you don’t have it in your machine.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Dependencies installation
+
+Run this command to install all of the dependencies using pnpm:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run the migrations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run the following command to run the migrations:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+pnpm db:migrate
+```
 
-## Learn More
+### Seed the database
 
-To learn more about Next.js, take a look at the following resources:
+Run the following command to seed the database:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm db:seed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Start the development server
 
-## Deploy on Vercel
+Run this command to start the development server.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Open [http://localhost:3000](http://localhost:3000) with your browser to interact with it.
+
+---
+
+## Implementations
+
+# Method 1
+
+In this method we create a wrapper component that will handle the definition of the date state and the logic to update it. We need to hoist the state that initially would be in the date picker component to the parent component to be able to update it. This way we can pass the date state and the function to update it to the date picker component and the table component.
+
+This wrapper component needs to be a client side component because we need to handle the state of the date and the logic to update it. This way we can't use a server side component because it would need to be re-rendered every time the date changes.
+
+# Method 2
+
+In this method we use React Context to share the date state and the function to update it between the date picker component and the table component. This way we don't need to hoist the state to the parent component, we centralize the state and the logic to update it in the context provider.
+
+This method is more complex than the first one but it's more flexible because we can use the context in other components and we can share the state between multiple components.
+
+We also maintain the minimum client side component surface. And are able to re-render only the necessary components when the date changes.
